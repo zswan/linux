@@ -1661,6 +1661,23 @@ config SERIAL_MVEBU_CONSOLE
 	  and warnings and which allows logins in single user mode)
 	  Otherwise, say 'N'.
 
+config SERIAL_NUC970
+	bool "NUC970 serial support"
+	depends on SOC_NUC970
+	select SERIAL_CORE
+	help
+	  This driver is for Nuvoton NUC970 SoC's UART. If you have a machine
+	  based on the NUC970 SoC and wish to use the on-board serial port,
+	  say 'Y' here.
+	  Otherwise, say 'N'.
+
+config SERIAL_NUC970_CONSOLE
+	bool "Console on NUC970 serial port"
+	depends on SERIAL_NUC970=y
+	select SERIAL_CORE_CONSOLE
+	help
+	  If you say Y here, it will be possible to use a serial port as the
+	  system console.
 endmenu
 
 config SERIAL_MCTRL_GPIO
