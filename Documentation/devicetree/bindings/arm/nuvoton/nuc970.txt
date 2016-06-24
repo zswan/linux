@@ -1,0 +1,30 @@
+Nuvoton NUC970 SoC platform Device Tree Bindings
+------------------------------------------
+
+Boards with the NUC970 SoC shall have the following properties:
+
+Root node required properties:
+- compatible: Should be "nuvoton,nuc970evb", "nuvoton,nuc970"
+
+Timer required properties:
+- compatible: Should be "nuvoton,tmr"
+- reg: Should contain registers location and length
+- interrupts: hwirq is direct mapping to irq number
+- clocks: phandle to input clock.
+
+Clock required properties:
+- compatible: Should be "nuvoton,clk"
+- reg: Should contain registers location and length
+
+Interrupt-controller required properties
+- compatible: Should be "nuvoton,aic"
+- reg: Should contain registers location and length
+- interrupt-cells: set to 1
+
+GCR register required properties:
+- compatible: Should be "nuvoton,gcr"
+- reg: Should contain registers location and length
+
+Uart required properties:
+- compatible: Should be "nuvoton,nuc970-uart"
+- reg: Should contain registers location and length

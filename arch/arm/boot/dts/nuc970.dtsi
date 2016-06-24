@@ -1,0 +1,93 @@
+/*
+ * Copyright 2016 Wan Zongshun <mcuos.com@gmail.com>
+ *
+ * The code contained herein is licensed under the GNU General Public
+ * License. You may obtain a copy of the GNU General Public License
+ * Version 2 or later at the following locations:
+ *
+ * http://www.opensource.org/licenses/gpl-license.html
+ * http://www.gnu.org/copyleft/gpl.html
+ */
+
+#include "skeleton.dtsi"
+#include <dt-bindings/clock/nuc970-clock.h>
+
+/ {
+	compatible = "nuvoton,nuc970evb", "nuvoton,nuc970";
+
+	interrupt-parent = <&aic>;
+
+	aliases {
+		serial0 = &uart0;
+	};
+
+	memory {
+		reg = <0x00000000 0x04000000>;
+	};
+
+	cpus {
+		#address-cells = <0>;
+		#size-cells = <0>;
+
+		cpu {
+			compatible = "arm,arm926ej-s";
+			device_type = "cpu";
+		};
+	};
+
+	ahb@B0000000 {
+		compatible = "simple-bus";
+		#address-cells = <1>;
+		#size-cells = <1>;
+		reg = <0xB0000000 0x9000>;
+		ranges;
+
+		gcr: gcr@B0000000 {
+			compatible = "nuvoton,gcr";
+			reg = <0xB0000000 0x200>;
+		};
+
+		clks: clk@B0000200 {
+			compatible = "nuvoton,clk";
+			reg = <0xB0000200 0x200>;
+			#clock-cells = <1>;
+		};
+
+	};
+
+	apb@B8000000 {
+		compatible = "simple-bus";
+		#address-cells = <1>;
+		#size-cells = <1>;
+		reg = <0xB8000000 0xF000>;
+		ranges;
+
+		aic: interrupt-controller@B8002000 {
+			compatible = "nuvoton,aic";
+			interrupt-controller;
+			#interrupt-cells = <1>;
+			reg = <0xB8002000 0x1000>;
+		};
+
+
+		tmr@0xB8001000 {
+			compatible = "nuvoton,tmr";
+			reg = <0xB8001000 0x1000>;
+			interrupts = <16>;
+			clocks = <&clks TIMER0_GATE>,
+				 <&clks TIMER1_GATE>;
+			clock-names = "timer0", "timer1";
+
+		};
+
+		uart0: serial@B8000000 {
+			compatible = "nuvoton,nuc970-uart";
+			reg = <0xB8000000 0x1000>;
+			interrupts = <36>;
+			clocks = <&clks UART0_GATE>,
+				 <&clks UART0_ECLK_GATE>;
+			clock-names = "uart0", "uart0_eclk";
+			clock-frequency = <12000000>;
+		};
+	};
+};
