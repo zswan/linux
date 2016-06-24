@@ -427,4 +427,12 @@ config CLKSRC_ST_LPC
 	  Enable this option to use the Low Power controller timer
 	  as clocksource.
 
+config NUC900_TIMER
+        bool "Clocksource timer for nuc900 platform" if COMPILE_TEST
+        depends on ARM
+        select CLKSRC_OF if OF
+        select CLKSRC_MMIO
+        help
+          Enables the clocksource for the NUC900 platform.
+
 endmenu
