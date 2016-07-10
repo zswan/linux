@@ -94,6 +94,13 @@ config POWER_RESET_MSM
 	help
 	  Power off and restart support for Qualcomm boards.
 
+config POWER_RESET_NUC900
+	bool "Nuc900 restart driver"
+	depends on ARCH_W90X900
+	help
+	  Power off and restart support for Nuvoton NUC900 family of
+	  reference boards.
+
 config POWER_RESET_LTC2952
 	bool "LTC2952 PowerPath power-off driver"
 	depends on OF_GPIO
