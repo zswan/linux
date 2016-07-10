@@ -59,7 +59,12 @@
 #define IRQ_KPI		W90X900_IRQ(29)
 #define IRQ_P2SGROUP	W90X900_IRQ(30)
 #define IRQ_ADC		W90X900_IRQ(31)
+
+#if !defined(CONFIG_SOC_NUC900)
 #define NR_IRQS		(IRQ_ADC+1)
+#else
+#define NR_IRQS		62
+#endif
 
 /*for irq group*/
 
