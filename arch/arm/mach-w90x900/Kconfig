@@ -15,6 +15,26 @@ config CPU_NUC960
 	help
 	  Support for NUCP960 of Nuvoton NUC900 CPUs.
 
+config SOC_NUC970
+	bool "Nuvoton NUC970 SoC support"
+	select COMMON_CLK
+	select GENERIC_IRQ_CHIP
+	select HAVE_CLK_PREPARE
+	select IRQ_DOMAIN
+	select MULTI_IRQ_HANDLER
+	select MFD_SYSCON
+	select NUC900_TIMER
+	select SOC_NUC900
+	select USE_OF
+	help
+	  Support for NUC970 of Nuvoton NUC900 SoCs.
+	  The NUC970 series runs up to 300 MHz, with 16 KB I-cache,
+	  16 KB D-cache and MMU, 56KB embedded SRAM and 16 KB Internal
+	  Boot ROM for booting from USB, NAND and SPI FLASH.
+	  Detailed information please check the following link:
+	  https://github.com/zswan/nuc900-document/blob/master/
+	  NUC970_TechnicalReferenceManual_EN_Rev1.30.pdf
+
 menu "W90P910 Machines"
 
 config MACH_W90P910EVB
