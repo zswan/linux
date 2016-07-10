@@ -1,0 +1,10 @@
+#
+# ARM Versatile SoC drivers
+#
+config SOC_NUC900
+	bool "SoC bus device for the nuvoton NUC900 platforms"
+	depends on ARCH_W90X900
+	select SOC_BUS
+	help
+	  Include support for the SoC bus on the NUC900 platforms
+	  providing some sysfs information about the ASIC variant.
