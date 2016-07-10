@@ -1,0 +1,13 @@
+NUC970 Clock Controller
+
+Clock required properties:
+- compatible: Should be "nuvoton,nuc970-clk"
+- reg: Should contain registers location and length
+
+Examples:
+
+clks: clk@b0000200 {
+	compatible = "nuvoton,nuc970-clk";
+	reg = <0xb0000200 0x200>;
+	#clock-cells = <1>;
+};

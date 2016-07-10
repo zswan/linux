@@ -1,0 +1,12 @@
+. Nuvoton NUC900 series, reset controller binding.
+
+Required properties:
+- compatible : Should be "nuvoton,nuc900-reset"
+- syscon : Reference to gcr controller.
+
+Example:
+
+reset {
+	compatible = "nuvoton,nuc900-reset";
+	syscon = <&gcr>;
+};

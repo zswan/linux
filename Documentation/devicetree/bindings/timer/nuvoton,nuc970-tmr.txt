@@ -1,0 +1,20 @@
+. Nuvoton NUC900 series, NUC970 SoC timer
+
+The NUC900 family has several general-purpose 32 bits timers.
+
+Required properties:
+- compatible : Should be "nuvoton,nuc970-tmr"
+- reg : Address and length of the register set
+- clocks : Reference on the timer input clock
+- interrupts : Reference to the timer interrupt
+
+Example:
+
+tmr@0xb8001000 {
+	compatible = "nuvoton,nuc970-tmr";
+	reg = <0xb8001000 0x1000>;
+	interrupts = <16>;
+	clocks = <&clks TIMER0_GATE>,
+	<&clks TIMER1_GATE>;
+	clock-names = "timer0", "timer1";
+};

@@ -1,0 +1,22 @@
+NUC970 UART Controller
+
+Uart required properties:
+- compatible: Should be "nuvoton,nuc970-uart"
+- reg: Should contain registers location and length
+
+Examples:
+
+aliases {
+	serial0 = &uart0;
+};
+
+uart0: serial@b8000000 {
+	compatible = "nuvoton,nuc970-uart";
+	reg = <0xb8000000 0x1000>;
+	interrupts = <36>;
+	clocks = <&clks UART0_GATE>,
+		 <&clks UART0_ECLK_GATE>;
+	clock-names = "uart0", "uart0_eclk";
+	clock-frequency = <12000000>;
+	status = "disabled";
+};

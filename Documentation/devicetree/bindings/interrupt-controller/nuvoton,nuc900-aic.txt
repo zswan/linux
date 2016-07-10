@@ -1,0 +1,15 @@
+NUC900 interrupt Controller
+
+Interrupt-controller required properties
+- compatible: Should be "nuvoton,nuc900-aic"
+- reg: Should contain registers location and length
+- interrupt-cells: set to 1
+
+Examples:
+
+aic: interrupt-controller@b8002000 {
+	compatible = "nuvoton,nuc900-aic";
+	interrupt-controller;
+	#interrupt-cells = <1>;
+	reg = <0xb8002000 0x1000>;
+};
